@@ -53,16 +53,6 @@ public class BrazierBlock extends Block implements IWaterLoggable {
         this.setDefaultState(this.stateContainer.getBaseState().with(LIT, Boolean.valueOf(true)).with(WATERLOGGED, Boolean.valueOf(false)));
     }
 
-
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (!entityIn.isImmuneToFire() && state.get(LIT) && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entityIn)) {
-            entityIn.attackEntityFrom(DamageSource.IN_FIRE, 1.0F);
-        }
-        super.onEntityCollision(state, worldIn, pos, entityIn);
-    }
-
-
-
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         IWorld iworld = context.getWorld();
